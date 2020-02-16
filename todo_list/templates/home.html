@@ -5,13 +5,25 @@
 {% block content %}
 
 {% if all_items %}
-<ul>
+<table class="table">
     {% for things in all_items %}
-        <li>
-            {{ things.item }} |   {{ things.completed }}
-        </li>
+     {% if things.completed %}
+        <tr class="table-secondary">
+            <td class="striker">{{ things.item }}</td>
+            <td style="text-align: center;">{{ things.completed }}</td>
+            <td style="text-align: center;">Delete</td>
+
+        </tr>
+     {% else %}
+          <tr>
+                <td>{{ things.item }}</td>
+                <td style="text-align: center;">{{ things.completed }}</td>
+                <td style="text-align: center;">Delete</td>
+
+            </tr>
+     {% endif %}
     {% endfor %}
-</ul>
+</table>
 {% endif %}
 
 {% endblock %}
